@@ -27,19 +27,23 @@ class ViewController: UIViewController {
         sun.geometry?.firstMaterial?.diffuse.contents = #imageLiteral(resourceName: "Sun diffuse")
         sun.position = SCNVector3(0,0,-1)
         self.sceneView.scene.rootNode.addChildNode(sun)
-        let earth = SCNNode()
-        earth.geometry = SCNSphere(radius: 0.2)
-        earth.geometry?.firstMaterial?.diffuse.contents = #imageLiteral(resourceName: "Earth day")
-        earth.geometry?.firstMaterial?.specular.contents = #imageLiteral(resourceName: "Earth Specular")
-        earth.geometry?.firstMaterial?.emission.contents = #imageLiteral(resourceName: "Earth Emission")
-        earth.geometry?.firstMaterial?.normal.contents = #imageLiteral(resourceName: "Earth Normal")
-        earth.position = SCNVector3(1.2,0,0)
+        let earth = planet(geometry: SCNSphere(radius: 0.3), diffuse: #imageLiteral(resourceName: "Earth day"), specular: #imageLiteral(resourceName: "Earth Specular"), emission: #imageLiteral(resourceName: "Earth Emission"), normal: #imageLiteral(resourceName: "Earth Normal"), position: SCNVector3(1.2,0,0))
         sun.addChildNode(earth)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func planet(geometry: SCNGeometry, diffuse: UIImage, specular: UIImage, emission: UIImage, normal: UIImage, position: SCNVector3) -> SCNNode {
+        let planet = SCNNode(geometry: geometry)
+        planet.geometry?.firstMaterial?.diffuse.contents = diffuse
+        planet.geometry?.firstMaterial?.specular.contents = specular
+        planet.geometry?.firstMaterial?.emission.contents = emission
+        planet.geometry?.firstMaterial?.normal.contents = normal
+        planet.position = position
+        return planet
     }
 
 
