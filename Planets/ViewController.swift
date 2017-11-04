@@ -28,6 +28,7 @@ class ViewController: UIViewController {
         earth.geometry?.firstMaterial?.diffuse.contents = #imageLiteral(resourceName: "Earth day")
         earth.geometry?.firstMaterial?.specular.contents = #imageLiteral(resourceName: "Earth Specular")
         earth.geometry?.firstMaterial?.emission.contents = #imageLiteral(resourceName: "Earth Emission")
+        earth.geometry?.firstMaterial?.normal.contents = #imageLiteral(resourceName: "Earth Normal")
         earth.position = SCNVector3(0,0,-1)
         self.sceneView.scene.rootNode.addChildNode(earth)
         
